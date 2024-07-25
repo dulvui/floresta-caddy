@@ -1,74 +1,71 @@
-
 ################################
 # simondalvai.org
 ###############################
 
 simondalvai.org {
-    root * /var/www/html/simondalvai.org
+        root * /var/www/html/simondalvai.org
         file_server
 
         handle_errors {
-            rewrite * /{err.status_code}.html
+                rewrite * /{err.status_code}.html
                 file_server
         }
 
-    log {
-        output file /var/log/caddy/simondalvai.org.log {
-            roll_size 100MiB
-                roll_keep 5
-                roll_keep_for 168h
-        }
-        format filter {
-            wrap json
+        log {
+                output file /var/log/caddy/simondalvai.org.log {
+                        roll_size 100MiB
+                        roll_keep 5
+                        roll_keep_for 168h
+                }
+                format filter {
+                        wrap json
 
-                fields {
-                    request>remote_ip ip_mask {
-                        ipv4 16
-                        ipv6 32
-                    }
-                }	
-        }	
-    }
+                        fields {
+                                request>remote_ip ip_mask {
+                                        ipv4 16
+                                        ipv6 32
+                                }
+                        }
+                }
+        }
 }
 
 www.simondalvai.org, www.s9i.org, s9i.org, www.s9i.cc, s9i.cc, www.simondalvai.com, simondalvai.com {
-    redir https://simondalvai.org{uri}
+        redir https://simondalvai.org{uri}
 }
-
 
 ################################
 # hackablegames.org
 ###############################
 
 hackablegames.org {
-    root * /var/www/html/hackablegames.org
+        root * /var/www/html/hackablegames.org
         file_server
 
         handle_errors {
-            rewrite * /{err.status_code}.html
+                rewrite * /{err.status_code}.html
                 file_server
         }
 
-    log {
-        output file /var/log/caddy/hackablegames.org.log {
-            roll_size 100MiB
-                roll_keep 5
-                roll_keep_for 168h
-        }
-        format filter {
-            wrap json
+        log {
+                output file /var/log/caddy/hackablegames.org.log {
+                        roll_size 100MiB
+                        roll_keep 5
+                        roll_keep_for 168h
+                }
+                format filter {
+                        wrap json
 
-                fields {
-                    request>remote_ip ip_mask {
-                        ipv4 16
-                        ipv6 32
-                    }
-                }	
-        }	
-    }
+                        fields {
+                                request>remote_ip ip_mask {
+                                        ipv4 16
+                                        ipv6 32
+                                }
+                        }
+                }
+        }
 }
 
 www.hackablegames.org, www.hackablegames.com, hackablegames.com, h11s.org, www.h11s.org {
-    redir https://hackablegames.org{uri}
+        redir https://hackablegames.org{uri}
 }
-
