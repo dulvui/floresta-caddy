@@ -38,36 +38,44 @@ www.simondalvai.org, www.s9i.org, s9i.org, www.s9i.cc, s9i.cc, www.simondalvai.c
 # 99managers.org
 ###############################
 
-99managers.org {
-        root * /var/www/html/99managers.org
-        file_server
+# 99managers.org {
+#         root * /var/www/html/99managers.org
+#         file_server
+#
+#         handle_errors {
+#                 rewrite * /{err.status_code}.html
+#                 file_server
+#         }
+#
+#         log {
+#                 output file /var/log/caddy/99managers.org.log {
+#                         roll_size 100MiB
+#                         roll_keep 5
+#                         roll_keep_for 168h
+#                 }
+#                 format filter {
+#                         wrap json
+#
+#                         fields {
+#                                 request>remote_ip ip_mask {
+#                                         ipv4 16
+#                                         ipv6 32
+#                                 }
+#                         }
+#                 }
+#         }
+# }
 
-        handle_errors {
-                rewrite * /{err.status_code}.html
-                file_server
-        }
+# www.99managers.org, www.99managers.com, 99managers.com {
+#         redir https://99managers.org{uri}
+# }
 
-        log {
-                output file /var/log/caddy/99managers.org.log {
-                        roll_size 100MiB
-                        roll_keep 5
-                        roll_keep_for 168h
-                }
-                format filter {
-                        wrap json
+################################
+# 99managers steam redirect
+###############################
 
-                        fields {
-                                request>remote_ip ip_mask {
-                                        ipv4 16
-                                        ipv6 32
-                                }
-                        }
-                }
-        }
-}
-
-www.99managers.org, www.99managers.com, 99managers.com {
-        redir https://99managers.org{uri}
+99managers.org, www.99managers.org, www.99managers.com, 99managers.com {
+        redir https://store.steampowered.com/app/3334770/99_Managers_Futsal_Edition/
 }
 
 ################################
