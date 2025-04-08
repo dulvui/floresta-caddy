@@ -5,6 +5,7 @@
 simondalvai.org {
         root * /var/www/html/simondalvai.org
         file_server
+        encode zstd gzip
 
         handle_errors {
                 rewrite * /{err.status_code}.html
@@ -85,6 +86,7 @@ www.simondalvai.org, www.s9i.org, s9i.org, www.s9i.cc, s9i.cc, www.simondalvai.c
 hackablegames.org {
         root * /var/www/html/hackablegames.org
         file_server
+        encode zstd gzip
 
         handle_errors {
                 rewrite * /{err.status_code}.html
